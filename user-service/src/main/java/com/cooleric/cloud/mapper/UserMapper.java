@@ -1,6 +1,6 @@
 package com.cooleric.cloud.mapper;
 
-import com.cooleric.cloud.dto.request.UserCreateDto;
+import com.cooleric.cloud.vo.request.UserCreateDto;
 import com.cooleric.cloud.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

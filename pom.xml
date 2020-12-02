@@ -7,6 +7,7 @@
         <module>eureka-server</module>
         <module>user-service</module>
         <module>common</module>
+        <module>api-gateway</module>
     </modules>
 
     <parent>
@@ -17,7 +18,7 @@
     </parent>
 
     <groupId>com.cooleric.cloud</groupId>
-    <artifactId>auth</artifactId>
+    <artifactId>employee-system</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
@@ -25,6 +26,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.RC1</spring-cloud.version>
+        <jjwtVersion>0.10.5</jjwtVersion>
     </properties>
 
     <dependencies>

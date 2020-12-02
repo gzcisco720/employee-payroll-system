@@ -1,0 +1,38 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /api
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+    settlement:
+      path: /user-service/**
+      serviceId: eureka-client-user-service
+      strip-prefix: false
+  host:
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+jwt:
+  secretKey: q3t6w9z$C&F)J@NcQfTjWnZr4u7x!A%D*G-KaPdSgUkXp2s5v8y/B?E(H+MbQeTh
+  expireInMs: 1800000
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 5000
+      eureka-client-user-service:
+        connectTimeout: 3000
+        readTimeout: 5000
+ribbon:
+  ConnectTimeout: 15000
+  ReadTimeout: 15000
+spring:
+  application:
+    name: zuul-api-gateway

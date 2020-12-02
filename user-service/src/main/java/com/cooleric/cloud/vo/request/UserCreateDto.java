@@ -1,4 +1,4 @@
-package com.cooleric.cloud.dto.request;
+package com.cooleric.cloud.vo.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,5 +16,5 @@ public class UserCreateDto {
     private String email;
     @NotBlank
     private String password;
-    private String role;
+    private String role = "user";
 }
