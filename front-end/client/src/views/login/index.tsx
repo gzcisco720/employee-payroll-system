@@ -13,9 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { useState } from 'react';
 import Alert from '@material-ui/lab/Alert';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Link from '@material-ui/core/Link';
 import Copyright from '../../components/copy-right';
 import useStyles from './style';
 import { validateEmail, isInputEmpty } from '../../utils/formUtils';
@@ -133,12 +132,12 @@ export default () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to="/reset_password">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link variant="body2">
+                <Link to="/signup">
                   Don't have an account? Sign Up
                 </Link>
               </Grid>

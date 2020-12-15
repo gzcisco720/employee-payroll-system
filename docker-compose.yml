@@ -2,21 +2,40 @@ version: '3.3'
 
 services:
   employeeInfodb:
-    image: mysql
+    image: postgres:13.0-alpine
     volumes:
-      - employeeInfodb_data:/var/lib/mysql
+      - employeeInfodb_data:/var/lib/postgresql/data/
     restart: always
     ports:
-      - 3306:3306
-      - 33060:33060
+      - 5432:5432
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: users
-      MYSQL_USER: eric
-      MYSQL_PASSWORD: admin
+      - POSTGRES_DB=users
+      - POSTGRES_USER=eric
+      - POSTGRES_PASSWORD=admin
     networks:
       - persist
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    networks:
+      - persist
+  redis-ui:
+    image: patrikx3/p3x-redis-ui:latest
+    ports:
+      - 7843:7843
+    volumes:
+      - p3x-redis-ui-settings:/settings
+    networks:
+      - persist
+    depends_on:
+      - redis
 volumes:
   employeeInfodb_data: {}
+  redis-data: {}
+  p3x-redis-ui-settings: {}
 networks:
   persist: {}
