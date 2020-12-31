@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/user-service/add").permitAll()
+                .antMatchers("/user-service/reset/**").permitAll()
                 .anyRequest().authenticated().and()
                 .addFilter(new JwtUsernameAndPasswordAuthFilter(authenticationManager(), jwtUtils))
                 .addFilterAfter(new JwtTokenFilter(jwtUtils, userService), JwtUsernameAndPasswordAuthFilter.class)
